@@ -7,7 +7,7 @@ class CalculadoraLogica {
   void presionarBoton(String texto) {
     if (_esNumero(texto) || texto == '.') {
       _procesarNumero(texto);
-    } else if (texto == '+') {
+    } else if (texto == '+' || texto == '-') {
       _procesarOperacion(texto);
     } else if (texto == '=') {
       _calcularResultado();
@@ -38,6 +38,8 @@ class CalculadoraLogica {
 
     if (_operador == '+') {
       resultado = _primerNumero + segundoNumero;
+    } else if (_operador == '-') {
+      resultado = _primerNumero - segundoNumero;
     }
 
     if (resultado % 1 == 0) {
