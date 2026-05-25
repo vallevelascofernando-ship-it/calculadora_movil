@@ -1,3 +1,4 @@
+import 'package:calculadora_movil/CalculadoraLogica.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final String _pantallaVisual = '0';
+  final CalculadoraLogica _logica = CalculadoraLogica();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class _HomePageState extends State<HomePage> {
                   vertical: 32,
                 ),
                 child: Text(
-                  _pantallaVisual,
+                  _logica.pantalla,
                   style: const TextStyle(
                     fontSize: 72,
                     fontWeight: FontWeight.w300,
@@ -66,7 +67,11 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.zero,
               color: _obtenerColorBoton(texto),
               borderRadius: BorderRadius.circular(40),
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  _logica.presionarBoton(texto);
+                });
+              },
               child: Text(
                 texto,
                 style: TextStyle(
