@@ -14,6 +14,8 @@ class CalculadoraLogica {
       _procesarOperacion(texto);
     } else if (texto == '=') {
       _calcularResultado();
+    } else if (texto == 'AC') {
+      _limpiarCalculadora();
     }
   }
 
@@ -60,6 +62,13 @@ class CalculadoraLogica {
     }
 
     _operador = '';
+  }
+
+  void _limpiarCalculadora() {
+    pantalla = '0';
+    _primerNumero = 0;
+    _operador = '';
+    _reiniciarPantalla = false;
   }
 
   bool _esNumero(String texto) {
