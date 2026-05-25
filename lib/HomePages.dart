@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
       navigationBar: const CupertinoNavigationBar(
         backgroundColor: CupertinoColors.black,
         middle: Text(
-          'Calculadora iOS, Fernando Valle Velasco',
+          'Calculadora iOS, Fernando, Jorge, Lewis',
           style: TextStyle(color: CupertinoColors.white),
         ),
       ),
