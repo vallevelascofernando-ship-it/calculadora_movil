@@ -18,6 +18,8 @@ class CalculadoraLogica {
       _limpiarCalculadora();
     } else if (texto == '+/-') {
       _cambiarSigno();
+    } else if (texto == '%') {
+      _calcularPorcentaje();
     }
   }
 
@@ -83,6 +85,17 @@ class CalculadoraLogica {
       pantalla = valor.toInt().toString();
     } else {
       pantalla = valor.toString();
+    }
+  }
+
+  void _calcularPorcentaje() {
+    double valor = double.tryParse(pantalla) ?? 0;
+    double resultado = valor / 100;
+
+    pantalla = resultado.toString();
+
+    if (pantalla.endsWith('.0')) {
+      pantalla = resultado.toInt().toString();
     }
   }
 
