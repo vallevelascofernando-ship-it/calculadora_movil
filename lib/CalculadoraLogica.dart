@@ -16,6 +16,8 @@ class CalculadoraLogica {
       _calcularResultado();
     } else if (texto == 'AC') {
       _limpiarCalculadora();
+    } else if (texto == '+/-') {
+      _cambiarSigno();
     }
   }
 
@@ -69,6 +71,19 @@ class CalculadoraLogica {
     _primerNumero = 0;
     _operador = '';
     _reiniciarPantalla = false;
+  }
+
+  void _cambiarSigno() {
+    double valor = double.tryParse(pantalla) ?? 0;
+    if (valor == 0) return; // El cero no cambia de signo
+
+    valor = valor * -1;
+
+    if (valor % 1 == 0) {
+      pantalla = valor.toInt().toString();
+    } else {
+      pantalla = valor.toString();
+    }
   }
 
   bool _esNumero(String texto) {
