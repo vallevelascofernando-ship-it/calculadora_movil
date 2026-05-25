@@ -5,9 +5,12 @@ class CalculadoraLogica {
   bool _reiniciarPantalla = false;
 
   void presionarBoton(String texto) {
+    if (pantalla == 'Error') {
+      pantalla = '0';
+    }
     if (_esNumero(texto) || texto == '.') {
       _procesarNumero(texto);
-    } else if (texto == '+' || texto == '-' || texto == '*') {
+    } else if (texto == '+' || texto == '-' || texto == '*' || texto == '/') {
       _procesarOperacion(texto);
     } else if (texto == '=') {
       _calcularResultado();
@@ -35,8 +38,14 @@ class CalculadoraLogica {
 
     double segundoNumero = double.tryParse(pantalla) ?? 0;
     double resultado = 0;
-
-    if (_operador == '+') {
+    if (_operador == '/') {
+      if (segundoNumero == 0) {
+        pantalla = 'Error';
+        _operador = '';
+        return;
+      }
+      resultado = _primerNumero / segundoNumero;
+    } else if (_operador == '+') {
       resultado = _primerNumero + segundoNumero;
     } else if (_operador == '-') {
       resultado = _primerNumero - segundoNumero;
